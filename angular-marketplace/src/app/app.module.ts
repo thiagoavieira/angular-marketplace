@@ -12,6 +12,9 @@ import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component'
+import { HttpClientModule } from '@angular/common/http';
+import { CardFilmComponent } from './components/template/card-film/card-film.component';
+import { ListFilmsComponent } from './views/list-films/list-films.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { HomeComponent } from './views/home/home.component'
     HeaderComponent,
     FooterComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    CardFilmComponent,
+    ListFilmsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import { HomeComponent } from './views/home/home.component'
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
