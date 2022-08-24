@@ -17,7 +17,7 @@
         descrição descrição descrição descrição descrição descrição descrição
         descrição descrição descrição descrição descrição descrição
       </p>
-      <p class="card-description">{{ film.price }}</p>
+      <p class="card-description">{{ film.price  | currency: "BRL"}}</p>
       <app-select-button (click)="selectFilm(film)"></app-select-button>
     </mat-card-content>
   </mat-card>
