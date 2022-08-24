@@ -29,6 +29,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   payment():void {
+    if (
+      this.client.address === undefined ||
+      this.client.name === undefined ||
+      this.client.password === undefined
+    ){
+      this.checkoutService.showMessage('Please enter a valid data', false);
+    } else {
+      this.checkoutService.showMessage(`Payment is successfully, good choice! Confirmed order: to ${this.client.address} by ${this.client.name}`, true)
+    }
     this.checkoutService.showMessage("Payment!", true);
     this.route.navigate(['../list-films'])
   }
