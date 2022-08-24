@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,7 +51,8 @@ import { CheckoutComponent } from './views/checkout/checkout.component'
     MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatBadgeModule
+    MatBadgeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

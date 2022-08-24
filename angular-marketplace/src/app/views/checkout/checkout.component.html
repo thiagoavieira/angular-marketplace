@@ -4,7 +4,7 @@
   </mat-card-title>
   <mat-card>
     <h2>{{ listSelectedFilms.length }} selected items</h2>
-    <h3>Total cost: {{ totalPrice | currency: "BRL"}}</h3>
+    <h3>Total cost: {{ totalPrice | currency: "BRL" }}</h3>
     <mat-card
       class="mat-card-film"
       [class.isValid]="disabled === true"
@@ -16,7 +16,7 @@
             <h2>{{ film.name }}</h2>
           </mat-card-title>
           <mat-card-subtitle>
-            {{ film.price | currency: "BRL"}}
+            {{ film.price | currency: "BRL" }}
           </mat-card-subtitle>
         </div>
         <button mat-flat-button color="warn" (click)="exclude(film)">
@@ -41,13 +41,16 @@
       <strong>Fill in the fields below to payment:</strong>
       <p>
         <mat-form-field appearance="outline" class="input-form">
-          <mat-label> What's your name?</mat-label>
+          <mat-label>{{
+            disabled ? "Please select at least one film" : "What's your name?"
+          }}</mat-label>
           <input
             matInput
             placeholder="Your name"
             required
             name="name"
             [disabled]="disabled === true"
+            [(ngModel)]="client.name"
           />
           <i class="material-icons" matSuffix required>person</i>
           <mat-hint>Ex.: John, Polly, Arthur...</mat-hint>
@@ -55,13 +58,14 @@
       </p>
       <p>
         <mat-form-field appearance="outline" class="input-form">
-          <mat-label> What's your address?</mat-label>
+          <mat-label>{{disabled ? "Please select at least one film" : "What's your address?"}}</mat-label>
           <input
             matInput
             placeholder="Your address"
             required
             name="address"
             [disabled]="disabled === true"
+            [(ngModel)]="client.address"
           />
           <i class="material-icons" matSuffix required>location_city</i>
           <mat-hint>Ex.: Fifth Avenue...</mat-hint>
@@ -75,6 +79,7 @@
             [type]="hide ? 'password' : 'text'"
             required
             name="password"
+            [(ngModel)]="client.password"
             [disabled]="disabled === true"
           />
           <button mat-icon-button matSuffix (click)="hide = !hide">
@@ -90,7 +95,7 @@
         mat-flat-button
         class="mat-pay"
         (click)="payment()"
-        [disabled]="disabled === true"
+        [disabled]="client.password == undefined || client.password == '' || totalPrice == 0 ? 'true' : 'false'"
       >
         Pay
       </button>

@@ -14,10 +14,15 @@ export class CheckoutComponent implements OnInit {
   disabled = false;
   hide = true;
   form: any;
+  client: any = {};
 
   constructor(private checkoutService: CheckoutService, private route: Router) { }
 
   ngOnInit(): void {
+    this.form = document.querySelector('#form');
+    this.form.addEventListener('click', (event: any) => {
+      event.preventDefault();
+    })
     this.totalPrice = this.checkoutService.totalPrice;
     this.listSelectedFilms = this.checkoutService.listSelectedFilms;
     this.toggleButton();
